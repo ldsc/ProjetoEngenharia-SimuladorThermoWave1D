@@ -47,14 +47,17 @@
 
 # Nome do Software (ou Biblioteca):
 
--   Coloque aqui o nome do simulador desenvolvido.
+-   ThermoWave 1D: Desenvolvimento de um Simulador Científico em C++
 
 
 <a id="org72ffa40"></a>
 
 # Resumo e/ou informação extra:
 
--   
+-   ThermoWave 1D é um simulador científico desenvolvido em C++ para análise da propagação de ondas termo-poroelásticas em meios porosos homogêneos, isotrópicos, unidimensionais e completamente saturados. O software é baseado nos modelos de Biot, com e sem dissipação viscosa, e Biot-JKD, permitindo estudar o comportamento das ondas compressionais P1 e P2 e da onda térmica T.
+
+O simulador permitirá configurar propriedades físicas, petrofísicas e térmicas do meio e analisar grandezas como velocidade de fase, dispersão, atenuação e propagação das ondas em diferentes condições e faixas de frequência. O projeto tem como objetivo transformar a formulação matemática apresentada na dissertação de referência em uma aplicação científica estruturada, extensível e voltada à experimentação numérica.
+
 
 
 <a id="org10111d4"></a>
@@ -68,7 +71,7 @@
 
 # Data:
 
--   2025/1 - primeiro semestre.
+-   2026/2 - segundo semestre.
 
 
 <a id="org50824d1"></a>
@@ -76,7 +79,7 @@
 # Autor de Contato:
 
 -   André Duarte Bueno <andreduartebueno@gmail.com>
--   Coloque aqui nome e contato do lider da equipe
+-   Ivy Rangel Ribeiro <ivy.rangel7@gmail.com>
 
 
 <a id="orgdcfbf20"></a>
@@ -85,6 +88,7 @@
 
 -   &#x2026;
 -   André Duarte Bueno <andreduartebueno@gmail.com>
+-   Ivy Rangel Ribeiro <ivy.rangel7@gmail.com>
 
 
 <a id="org3e9046d"></a>
@@ -92,10 +96,11 @@
 # Áreas de pesquisa vinculadas:
 
 -   Modelagem Matemática Computacional
--   &#x2026;Engenharia de Reservatório?
--   &#x2026;Geofísica?
--   &#x2026;Petrofísica?
--   &#x2026;Geologia e geoquímica?
+-   Geofísica
+-   Petrofísica
+-   Poroelasticidade e termo-poroelasticidade
+-   Transferência de calor em meios porosos
+-   Métodos numéricos e computação científica
 
 
 <a id="org3a88e7c"></a>
@@ -119,7 +124,7 @@
 # Tipo de Interface:
 
 -   Terminal e gráfica (gnuplot).
--   Qt? [opcional]
+  
 
 
 <a id="org5edb591"></a>
@@ -142,7 +147,6 @@
 
 -   CGnuplot - <https://github.com/ldsc/CGnuplot>
 -   QCustomPlot - <https://www.qcustomplot.com/>
--   ?
 
 
 <a id="orga7939eb"></a>
