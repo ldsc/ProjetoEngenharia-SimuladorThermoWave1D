@@ -1,5 +1,5 @@
-#LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 620
+#LyX 2.5 created this file. For more info see https://www.lyx.org/
+\lyxformat 643
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -133,11 +133,19 @@
 \use_indices false
 \paperorientation portrait
 \suppress_date false
-\justification true
-\use_refstyle 0
+\justification default
+\crossref_package prettyref
 \use_formatted_ref 0
 \use_minted 0
 \use_lineno 0
+\backgroundcolor none
+\fontcolor none
+\notefontcolor lightgray
+\boxbgcolor red
+\table_border_color default
+\table_odd_row_color default
+\table_even_row_color default
+\table_alt_row_colors_start 1
 \index Índice
 \shortcut idx
 \color #008000
@@ -169,6 +177,7 @@
 \html_be_strict false
 \docbook_table_output 0
 \docbook_mathml_prefix 1
+\docbook_mathml_version 0
 \end_header
 
 \begin_body
@@ -178,7 +187,6 @@
 status open
 
 \begin_layout Plain Layout
-
 
 \backslash
 lhead{
@@ -190,13 +198,11 @@ space - Especificação}
 
 \begin_layout Plain Layout
 
-
 \backslash
 chead{}  
 \end_layout
 
 \begin_layout Plain Layout
-
 
 \backslash
 rhead{}  
@@ -374,7 +380,6 @@ status open
 	filename ../../imagens/ProjetoEngenharia-Etapas-Geral-wide.png
 	lyxscale 50
 	width 100text%
-	keepAspectRatio
 	special height=0.8\textheight
 
 \end_inset
@@ -439,7 +444,8 @@ Nome
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+ThermoWave 1D:
+ Desenvolvimento de um Simulador Científico em C++
 \end_layout
 
 \end_inset
@@ -461,7 +467,10 @@ Componentes principais
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Configuração dos parâmetros físicos,
+ modelos Biot e Biot-JKD,
+ motor de simulação,
+ análise de dispersão e atenuação e visualização dos resultados.
 \end_layout
 
 \end_inset
@@ -483,7 +492,9 @@ Missão
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Simular e analisar a propagação de ondas termo-poroelásticas em meios porosos saturados 1D,
+ permitindo avaliar a influência dos parâmetros físicos na velocidade,
+ dispersão e atenuação das ondas.
 \end_layout
 
 \end_inset
@@ -532,17 +543,108 @@ especificação
 \end_layout
 
 \begin_layout Standard
-Apresenta-se a seguir a especificação do software.
+O ThermoWave 1D será um software científico desenvolvido em C++ para simulação e análise da propagação de ondas termo-poroelásticas em meios porosos homogêneos,
+ isotrópicos,
+ unidimensionais e completamente saturados.
+ O sistema será baseado nos modelos de Biot,
+ com e sem dissipação viscosa,
+ e Biot-JKD,
+ conforme a formulação apresentada na dissertação.
 \end_layout
 
 \begin_layout Standard
-....coloque aqui a especificação...
+O usuário poderá informar parâmetros físicos,
+ petrofísicos e térmicos do meio,
+ selecionar o modelo de simulação e definir as condições do experimento.
+ O software realizará os cálculos necessários para determinar o comportamento das ondas P1,
+ P2 e térmica (T),
+ considerando diferentes faixas de frequência.
 \end_layout
 
 \begin_layout Standard
-...eventualmente coloque imagem ilustrativa geral,
- mostrando o que se pretente (primeira ideia) do software;
- normalmente esta figura já será mais detalhada que aquela apresentada no escopo...
+Como resultados,
+ o sistema deverá apresentar informações relacionadas à velocidade de fase,
+ dispersão,
+ atenuação e propagação das ondas,
+ além da evolução do deslocamento da fase sólida,
+ do deslocamento relativo do fluido e da temperatura.
+\end_layout
+
+\begin_layout Standard
+Entradas principais:
+\end_layout
+
+\begin_layout Itemize
+Propriedades da rocha e do fluido;
+\end_layout
+
+\begin_layout Itemize
+Porosidade e permeabilidade;
+\end_layout
+
+\begin_layout Itemize
+Parâmetros térmicos;
+\end_layout
+
+\begin_layout Itemize
+Frequência ou faixa de frequências;
+\end_layout
+
+\begin_layout Itemize
+Modelo físico utilizado;
+\end_layout
+
+\begin_layout Itemize
+Parâmetros da fonte de onda.
+\end_layout
+
+\begin_layout Standard
+Processamento:
+\end_layout
+
+\begin_layout Itemize
+Aplicação das equações termo-poroelásticas 1D;
+\end_layout
+
+\begin_layout Itemize
+Cálculo das propriedades de propagação;
+\end_layout
+
+\begin_layout Itemize
+Análise de dispersão e atenuação;
+\end_layout
+
+\begin_layout Itemize
+Simulação da propagação das ondas.
+\end_layout
+
+\begin_layout Standard
+Saídas principais
+\end_layout
+
+\begin_layout Itemize
+Velocidade de fase das ondas P1,
+ P2 e T;
+\end_layout
+
+\begin_layout Itemize
+Atenuação das ondas;
+\end_layout
+
+\begin_layout Itemize
+Gráficos em função da frequência;
+\end_layout
+
+\begin_layout Itemize
+Deslocamento da fase sólida;
+\end_layout
+
+\begin_layout Itemize
+Deslocamento relativo do fluido;
+\end_layout
+
+\begin_layout Itemize
+Variação de temperatura ao longo da simulação.
 \end_layout
 
 \begin_layout Section
@@ -631,8 +733,10 @@ RF-01
 \begin_inset Text
 
 \begin_layout Plain Layout
-O sistema deve conter uma base de dados xxx.
- O usuário deve ser capaz de xxx.
+O sistema deverá permitir que o usuário informe,
+ por meio do terminal,
+ os parâmetros físicos,
+ petrofísicos e térmicos necessários para a realização da simulação.
 \end_layout
 
 \end_inset
@@ -671,7 +775,8 @@ RF-02
 \begin_inset Text
 
 \begin_layout Plain Layout
-O usuário deverá ter liberdade para xxxx.
+O sistema deverá apresentar na tela os resultados obtidos durante a simulação,
+ incluindo as velocidades de fase e os valores de atenuação das ondas analisadas.
 \end_layout
 
 \end_inset
@@ -710,7 +815,7 @@ RF-03
 \begin_inset Text
 
 \begin_layout Plain Layout
-Deve permitir o carregamento de arquivos criados pelo software.
+O sistema deverá permitir a leitura de dados de entrada a partir de arquivos e a gravação dos resultados das simulações em arquivos de saída..
 \end_layout
 
 \end_inset
@@ -752,7 +857,8 @@ RF-04
 \begin_inset Text
 
 \begin_layout Plain Layout
-Deve permitir a escolha da equação xxx.
+O sistema deverá permitir ao usuário selecionar o modelo físico utilizado na simulação entre Biot sem dissipação viscosa,
+ Biot com dissipação viscosa e Biot-JKD.
 \end_layout
 
 \end_inset
@@ -794,7 +900,10 @@ RF-05
 \begin_inset Text
 
 \begin_layout Plain Layout
-O usuário deve ter tal liberdade para escolher xxx.
+O sistema deverá permitir ao usuário definir os parâmetros da simulação,
+ incluindo propriedades do meio,
+ parâmetros térmicos,
+ frequência ou faixa de frequências e parâmetros da fonte de onda.
 \end_layout
 
 \end_inset
@@ -833,8 +942,8 @@ RF-06
 \begin_inset Text
 
 \begin_layout Plain Layout
-O usuário poderá plotar seus resultados em um gráfico.
- O gráfico poderá ser salvo como imagem ou ter seus dados exportados como texto.
+O sistema deverá permitir a geração de gráficos a partir dos resultados obtidos.
+ Os gráficos poderão ser salvos como imagem e os dados utilizados em sua construção poderão ser exportados para arquivo texto.
 \end_layout
 
 \end_inset
@@ -899,7 +1008,8 @@ RNF-01
 \begin_inset Text
 
 \begin_layout Plain Layout
-Os cálculos devem ser feitos utilizando-se xxxx.
+Os cálculos numéricos deverão ser implementados em C++,
+ utilizando variáveis para representar os parâmetros e resultados da simulação.
 \end_layout
 
 \end_inset
@@ -970,7 +1080,7 @@ Mac
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 #O que são os casos de uso
@@ -1204,7 +1314,7 @@ Nome do caso de uso:
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Executar simulação termo-poroelástica
 \end_layout
 
 \end_inset
@@ -1224,7 +1334,10 @@ Resumo/descrição:
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Permitir que o usuário configure os parâmetros físicos e numéricos do problema,
+ selecione o modelo termo-poroelástico e execute a simulação para obter informações sobre a propagação,
+ dispersão e atenuação das ondas P1,
+ P2 e T.
 \end_layout
 
 \end_inset
@@ -1243,8 +1356,41 @@ Etapas:
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Enumerate
+O usuário inicia o programa.
+\end_layout
 
+\begin_layout Enumerate
+O usuário seleciona o modelo físico da simulação.
+\end_layout
+
+\begin_layout Enumerate
+O usuário informa os parâmetros físicos,
+ petrofísicos e térmicos do meio ou carrega esses dados a partir de um arquivo.
+\end_layout
+
+\begin_layout Enumerate
+O usuário define a frequência ou a faixa de frequências da análise.
+\end_layout
+
+\begin_layout Enumerate
+O sistema verifica os dados informados.
+\end_layout
+
+\begin_layout Enumerate
+O usuário solicita a execução da simulação.
+\end_layout
+
+\begin_layout Enumerate
+O sistema realiza os cálculos numéricos.
+\end_layout
+
+\begin_layout Enumerate
+O sistema apresenta os resultados obtidos.
+\end_layout
+
+\begin_layout Enumerate
+O usuário poderá gerar gráficos ou exportar os resultados para arquivo.
 \end_layout
 
 \end_inset
@@ -1264,7 +1410,10 @@ Cenários alternativos:
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Caso algum parâmetro informado seja inválido ou esteja ausente,
+ o sistema deverá informar o problema ao usuário e solicitar sua correção antes de iniciar os cálculos.
+ Caso ocorra erro na leitura de um arquivo de entrada,
+ o sistema deverá informar que os dados não puderam ser carregados.
 \end_layout
 
 \end_inset
@@ -1310,7 +1459,7 @@ status open
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Dica importante:
@@ -1440,7 +1589,7 @@ Você não precisará ficar copiando e colando.
 \end_layout
 
 \begin_layout Standard
-exemplo...
+.
 \end_layout
 
 \begin_layout Standard
@@ -1525,50 +1674,13 @@ do software
 \end_layout
 
 \begin_layout Standard
-....coloque aqui casos de uso específicos,
- descrição + figura(s)...
-\end_layout
-
-\begin_layout Standard
-exemplo...O caso de uso Calcular área função descrito na Figura 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "cap:Diagrama-caso-uso-geral"
-nolink "false"
-
-\end_inset
-
- e na Tabela 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "cap:Exemplo-de-um-caso-de-uso (tabela)"
-nolink "false"
-
-\end_inset
-
- é detalhado na Figura 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "cap:Diagrama-de-caso-de-uso-especifico:Titulo"
-nolink "false"
-
-\end_inset
-
-.
- O usuário criará um objeto função matemática,
- um objeto para sua integração;
- em seguida,
- definirá o intervalo de integração,
- calculará a área da função criada e,
-  por fim,
- analisará os resultados (eventualmente gerará gráficos com os resultados obtidos utilizando um sistema externo,
- como o software 
-\emph on
-gnuplot
-\emph default
-).
- Este diagrama de caso de uso ilustra as etapas a serem executadas pelo usuário ou sistema,
- a iteração do usuário com o sistema.
+O diagrama de caso de uso geral apresenta as principais interações entre o usuário e o ThermoWave 1D.
+ O usuário poderá configurar os parâmetros da simulação,
+ carregar dados de entrada,
+ selecionar o modelo físico,
+ executar a simulação,
+ visualizar os resultados,
+ gerar gráficos e exportar os dados obtidos.
 \end_layout
 
 \begin_layout Standard
