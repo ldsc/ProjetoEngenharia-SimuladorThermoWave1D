@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.5 created this file. For more info see https://www.lyx.org/
+\lyxformat 643
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -27,11 +27,11 @@
 \end_preamble
 \use_default_options false
 \master DocumentoMestre-Trabalho-ProgramacaoPratica.lyx
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language brazilian
 \language_package auto
-\inputencoding auto
-\fontencoding global
+\inputencoding auto-legacy
+\fontencoding auto
 \font_roman "default" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
@@ -39,7 +39,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -53,7 +55,7 @@
 \paperfontsize 12
 \spacing onehalf
 \use_hyperref false
-\papersize a4paper
+\papersize a4
 \use_geometry true
 \use_package amsmath 1
 \use_package amssymb 1
@@ -72,9 +74,19 @@
 \use_indices false
 \paperorientation portrait
 \suppress_date false
-\justification true
-\use_refstyle 0
+\justification default
+\crossref_package prettyref
+\use_formatted_ref 0
 \use_minted 0
+\use_lineno 0
+\backgroundcolor none
+\fontcolor none
+\notefontcolor lightgray
+\boxbgcolor red
+\table_border_color default
+\table_odd_row_color default
+\table_even_row_color default
+\table_alt_row_colors_start 1
 \index Índice
 \shortcut idx
 \color #008000
@@ -96,11 +108,17 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle fancy
+\tablestyle default
 \tracking_changes false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\docbook_mathml_version 0
 \end_header
 
 \begin_body
@@ -122,7 +140,6 @@ status open
 
 \begin_layout Plain Layout
 
-
 \backslash
 lhead{
 \backslash
@@ -135,16 +152,20 @@ thechapter - Projeto}
 \end_layout
 
 \begin_layout Standard
-Neste capítulo do projeto de engenharia veremos questões associadas ao projeto
- do sistema, incluindo protocolos, recursos, plataformas suportadas, inplicações
- nos diagramas feitos anteriormente, diagramas de componentes e implantação.
- Na segunda parte revisamos os diagramas levando em conta as decisões do
- projeto do sistema.
+Neste capítulo do projeto de engenharia veremos questões associadas ao projeto do sistema,
+ incluindo protocolos,
+ recursos,
+ plataformas suportadas,
+ inplicações nos diagramas feitos anteriormente,
+ diagramas de componentes e implantação.
+ Na segunda parte revisamos os diagramas levando em conta as decisões do projeto do sistema.
 \end_layout
 
 \begin_layout Section
 Projeto do Sistema
 \begin_inset Index idx
+range none
+pageformat default
 status open
 
 \begin_layout Plain Layout
@@ -165,18 +186,22 @@ name "sec:Projeto-do-sistema"
 
 \begin_layout Standard
 Depois da análise orientada a objeto desenvolve-se o projeto do sistema,
- qual envolve etapas como a definição dos protocolos, da interface API,
- o uso de recursos, a subdivisão do sistema em subsistemas, a alocação dos
- subsistemas ao hardware e a seleção das estruturas de controle, a seleção
- das plataformas do sistema, das bibliotecas externas, dos padrões de projeto,
- além da tomada de decisões conceituais e políticas que formam a infraestrutura
- do projeto.
+ qual envolve etapas como a definição dos protocolos,
+ da interface API,
+ o uso de recursos,
+ a subdivisão do sistema em subsistemas,
+ a alocação dos subsistemas ao hardware e a seleção das estruturas de controle,
+ a seleção das plataformas do sistema,
+ das bibliotecas externas,
+ dos padrões de projeto,
+ além da tomada de decisões conceituais e políticas que formam a infraestrutura do projeto.
 \end_layout
 
 \begin_layout Standard
-Deve-se definir padrões de documentação, padrões para o nome das classes,
- padrões de retorno e de parâmetros em métodos, características da interface
- do usuário e características de desempenho.
+Deve-se definir padrões de documentação,
+ padrões para o nome das classes,
+ padrões de retorno e de parâmetros em métodos,
+ características da interface do usuário e características de desempenho.
  
 \end_layout
 
@@ -189,14 +214,17 @@ literal "true"
 
 \end_inset
 
-, o projeto do sistema é a estratégia de alto nível para resolver o problema
- e elaborar uma solução.
- Você deve se preocupar com itens como: 
+,
+ o projeto do sistema é a estratégia de alto nível para resolver o problema e elaborar uma solução.
+ Você deve se preocupar com itens como:
+ 
 \end_layout
 
 \begin_layout Enumerate
 Protocolos
 \begin_inset Index idx
+range none
+pageformat default
 status open
 
 \begin_layout Plain Layout
@@ -214,14 +242,14 @@ Protocolos
 
 \begin_deeper
 \begin_layout Itemize
-Definição dos protocolos de comunicação entre os diversos elementos externos
- 
+Definição dos protocolos de comunicação entre os diversos elementos externos 
 \begin_inset Newline newline
 \end_inset
 
 (como dispositivos).
- Por exemplo: se o sistema envolve o uso dos nós de um cluster, devem ser
- considerados aspectos como o protocolo de comunicação entre os nós do cluster.
+ Por exemplo:
+ se o sistema envolve o uso dos nós de um cluster,
+ devem ser considerados aspectos como o protocolo de comunicação entre os nós do cluster.
 \begin_inset Separator latexpar
 \end_inset
 
@@ -230,13 +258,16 @@ Definição dos protocolos de comunicação entre os diversos elementos externos
 
 \begin_deeper
 \begin_layout Itemize
-Neste projeto blablabla
+Neste projeto,
+ não haverá comunicação com dispositivos externos,
+ servidores ou serviços remotos.
+ A interação externa ocorrerá entre o usuário,
+ o ThermoWave 1D e o sistema de arquivos local.
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-Definição dos protocolos de comunicação entre os diversos elementos internos
- 
+Definição dos protocolos de comunicação entre os diversos elementos internos 
 \begin_inset Newline newline
 \end_inset
 
@@ -250,7 +281,14 @@ Definição dos protocolos de comunicação entre os diversos elementos internos
 
 \begin_deeper
 \begin_layout Itemize
-Neste projeto blablabla
+Neste projeto,
+ a comunicação interna será realizada por chamadas entre objetos e interfaces C++,
+ seguindo as dependências estabelecidas entre os módulos Application,
+ Simulation,
+ Physics,
+ Numerical,
+ Model,
+ I/O e Visualization.
 \end_layout
 
 \end_deeper
@@ -264,13 +302,18 @@ Definição da interface API de suas bibliotecas e sistemas.
 
 \begin_deeper
 \begin_layout Itemize
-Neste projeto blablabla
+Neste projeto,
+ serão utilizadas interfaces internas para desacoplar os componentes.
+ A classe abstrata WaveModel definirá a interface comum dos modelos físicos,
+ permitindo que o SimulationEngine utilize diferentes modelos sem depender de suas implementações específicas.
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
 Definição do formato dos arquivos gerados pelo software.
- Por exemplo: prefira formatos abertos, como arquivos txt e xml.
+ Por exemplo:
+ prefira formatos abertos,
+ como arquivos txt e xml.
 \begin_inset Separator latexpar
 \end_inset
 
@@ -279,7 +322,9 @@ Definição do formato dos arquivos gerados pelo software.
 
 \begin_deeper
 \begin_layout Itemize
-Neste projeto blablabla
+Neste projeto,
+ os dados numéricos de entrada e saída serão armazenados principalmente em arquivos CSV.
+ Os gráficos gerados pelo sistema poderão ser exportados em formato de imagem.
 \end_layout
 
 \end_deeper
@@ -287,6 +332,8 @@ Neste projeto blablabla
 \begin_layout Enumerate
 Recursos
 \begin_inset Index idx
+range none
+pageformat default
 status open
 
 \begin_layout Plain Layout
@@ -304,8 +351,10 @@ Recursos
 
 \begin_deeper
 \begin_layout Itemize
-Identificação e alocação dos recursos globais, como os recursos do sistema
- serão alocados, utilizados, compartilhados e liberados.
+Identificação e alocação dos recursos globais,
+ como os recursos do sistema serão alocados,
+ utilizados,
+ compartilhados e liberados.
  Implicam modificações no diagrama de componentes.
 \begin_inset Separator latexpar
 \end_inset
@@ -315,7 +364,10 @@ Identificação e alocação dos recursos globais, como os recursos do sistema
 
 \begin_deeper
 \begin_layout Itemize
-Neste projeto blablabla
+Neste projeto,
+ os principais recursos serão processador,
+ memória RAM e armazenamento local.
+ Os parâmetros e resultados serão mantidos em memória durante a execução da simulação e liberados após o processamento.
 \end_layout
 
 \end_deeper
@@ -330,13 +382,16 @@ Identificação da necessidade do uso de banco de dados.
 
 \begin_deeper
 \begin_layout Itemize
-Neste projeto blablabla
+Neste projeto,
+ não será utilizado banco de dados,
+ pois as configurações e os resultados das simulações poderão ser armazenados em arquivos locais.
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
 Identificação da necessidade de sistemas de armazenamento de massa.
- Por exemplo: um 
+ Por exemplo:
+ um 
 \emph on
 storage
 \emph default
@@ -349,7 +404,10 @@ storage
 
 \begin_deeper
 \begin_layout Itemize
-Neste projeto blablabla
+Neste projeto,
+ não será necessário um sistema dedicado de armazenamento de massa.
+ Os arquivos de entrada,
+ resultados e gráficos serão armazenados no sistema de arquivos local do computador.
 \end_layout
 
 \end_deeper
@@ -357,6 +415,8 @@ Neste projeto blablabla
 \begin_layout Enumerate
 Controle
 \begin_inset Index idx
+range none
+pageformat default
 status open
 
 \begin_layout Plain Layout
@@ -374,7 +434,8 @@ Controle
 
 \begin_deeper
 \begin_layout Itemize
-Identificação e seleção da implementação de controle, seqüencial ou concorrente,
+Identificação e seleção da implementação de controle,
+ seqüencial ou concorrente,
  baseado em procedimentos ou eventos.
  Implicam modificações no diagrama de execução.
  
@@ -386,7 +447,9 @@ Identificação e seleção da implementação de controle, seqüencial ou conco
 
 \begin_deeper
 \begin_layout Itemize
-Neste projeto blablabla
+Neste projeto,
+ o fluxo principal será inicialmente sequencial.
+ O SimulationEngine coordenará a execução da simulação e as chamadas aos modelos físicos e às rotinas numéricas.
 \end_layout
 
 \end_deeper
@@ -400,14 +463,18 @@ Identificação das condições extremas e de prioridades.
 
 \begin_deeper
 \begin_layout Itemize
-Neste projeto blablabla
+Neste projeto,
+ serão tratadas situações como parâmetros ausentes ou inválidos,
+ arquivos inexistentes ou incorretos,
+ frequências fora dos limites definidos e resultados numéricos não válidos.
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
 Identificação da necessidade de otimização.
- Por exemplo: prefira sistemas com grande capacidade de memória; prefira
- vários hds pequenos a um grande.
+ Por exemplo:
+ prefira sistemas com grande capacidade de memória;
+ prefira vários hds pequenos a um grande.
 \begin_inset Separator latexpar
 \end_inset
 
@@ -416,7 +483,11 @@ Identificação da necessidade de otimização.
 
 \begin_deeper
 \begin_layout Itemize
-Neste projeto blablabla
+Neste projeto,
+ a principal necessidade de otimização está relacionada à repetição dos cálculos para diferentes valores de frequência.
+ Inicialmente será priorizada a correção científica dos resultados e,
+ posteriormente,
+ poderão ser aplicadas otimizações de desempenho.
 \end_layout
 
 \end_deeper
@@ -435,13 +506,16 @@ loops
 
 \begin_deeper
 \begin_layout Itemize
-Neste projeto blablabla
+Neste projeto,
+ o principal processo iterativo será realizado sobre a faixa de frequências definida pelo usuário.
+ Para cada frequência serão calculados os coeficientes do modelo,
+ as velocidades de fase e os valores de atenuação das ondas P1,
+ P2 e T.
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-Identificação de concorrências – quais algoritmos podem ser implementados
- usando processamento paralelo.
+Identificação de concorrências – quais algoritmos podem ser implementados usando processamento paralelo.
  
 \begin_inset Separator latexpar
 \end_inset
@@ -451,7 +525,10 @@ Identificação de concorrências – quais algoritmos podem ser implementados
 
 \begin_deeper
 \begin_layout Itemize
-Neste projeto blablabla
+Neste projeto,
+ os cálculos referentes a diferentes valores de frequência apresentam potencial para execução paralela,
+ pois podem ser processados de forma independente.
+ Essa possibilidade poderá ser explorada posteriormente.
 \end_layout
 
 \end_deeper
@@ -459,6 +536,8 @@ Neste projeto blablabla
 \begin_layout Enumerate
 Plataformas
 \begin_inset Index idx
+range none
+pageformat default
 status open
 
 \begin_layout Plain Layout
@@ -486,14 +565,19 @@ Identificação das estruturas arquitetônicas comuns.
 
 \begin_deeper
 \begin_layout Itemize
-Neste projeto blablabla
+Neste projeto,
+ será utilizada uma arquitetura modular orientada a objetos,
+ separando os dados do domínio,
+ modelos físicos,
+ métodos numéricos,
+ execução da simulação,
+ entrada e saída e visualização dos resultados.
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
 Identificação de subsistemas relacionados à plataforma selecionada.
- Podem implicar em modificações no diagrama de pacotes e no diagrama de
- componentes.
+ Podem implicar em modificações no diagrama de pacotes e no diagrama de componentes.
  
 \begin_inset Separator latexpar
 \end_inset
@@ -503,12 +587,20 @@ Identificação de subsistemas relacionados à plataforma selecionada.
 
 \begin_deeper
 \begin_layout Itemize
-Neste projeto blablabla
+Neste projeto,
+ os principais subsistemas serão Application,
+ Simulation,
+ Physics,
+ Numerical,
+ Model,
+ I/O e Visualization,
+ correspondentes aos pacotes identificados anteriormente na análise orientada a objetos.
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-Identificação e definição das plataformas a serem suportadas: hardware,
+Identificação e definição das plataformas a serem suportadas:
+ hardware,
  sistema operacional e linguagem de software.
 \begin_inset Separator latexpar
 \end_inset
@@ -518,7 +610,10 @@ Identificação e definição das plataformas a serem suportadas: hardware,
 
 \begin_deeper
 \begin_layout Itemize
-Neste projeto blablabla
+Neste projeto,
+ o ThermoWave 1D será desenvolvido em C++ para computadores de arquitetura 64 bits,
+ com suporte previsto aos sistemas Windows,
+ GNU/Linux e macOS.
 \end_layout
 
 \end_deeper
@@ -532,13 +627,16 @@ Seleção das bibliotecas externas a serem utilizadas.
 
 \begin_deeper
 \begin_layout Itemize
-Neste projeto blablabla
+Neste projeto,
+ a biblioteca padrão do C++ será utilizada para estruturas de dados,
+ arquivos,
+ algoritmos e números complexos.
+ A biblioteca Eigen poderá ser utilizada para operações de álgebra linear necessárias ao núcleo numérico.
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-Seleção da biblioteca utilizada para montar a interface gráfica do software
- – GDI.
+Seleção da biblioteca utilizada para montar a interface gráfica do software – GDI.
 \begin_inset Separator latexpar
 \end_inset
 
@@ -547,13 +645,14 @@ Seleção da biblioteca utilizada para montar a interface gráfica do software
 
 \begin_deeper
 \begin_layout Itemize
-Neste projeto blablabla
+Neste projeto,
+ a interface gráfica será desenvolvida utilizando Qt 6,
+ por oferecer suporte multiplataforma e recursos adequados para construção da interface e apresentação dos resultados.
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-Seleção do ambiente de desenvolvimento para montar a interface de desenvolviment
-o – IDE.
+Seleção do ambiente de desenvolvimento para montar a interface de desenvolvimento – IDE.
  
 \begin_inset Separator latexpar
 \end_inset
@@ -563,7 +662,10 @@ o – IDE.
 
 \begin_deeper
 \begin_layout Itemize
-Neste projeto blablabla
+Neste projeto,
+ o desenvolvimento poderá ser realizado utilizando uma IDE compatível com C++,
+ CMake e Qt,
+ mantendo o processo de compilação independente do ambiente escolhido.
 \end_layout
 
 \end_deeper
@@ -578,8 +680,7 @@ Padrões de projeto
 
 \begin_deeper
 \begin_layout Itemize
-Normalmente os padrões de projeto são identificados e passam a fazer parte
- de uma biblioteca de padrões da empresa.
+Normalmente os padrões de projeto são identificados e passam a fazer parte de uma biblioteca de padrões da empresa.
  Mas isto só ocorre após a realização de diversos projetos.
 \begin_inset Separator latexpar
 \end_inset
@@ -587,27 +688,23 @@ Normalmente os padrões de projeto são identificados e passam a fazer parte
 
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-Neste projeto blablabla
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-se um item não for pertinente; pode ser retirado; ,mas somente na versão
- final; isto facilita o trabalho de revisão do trabalho!!
+\begin_layout Standard
+Neste projeto,
+ será utilizado principalmente o padrão Strategy para organizar os diferentes modelos físicos implementados no ThermoWave 1D.
+ A classe WaveModel funcionará como uma abstração comum para os modelos Biot sem dissipação,
+ Biot com dissipação viscosa e Biot-JKD.
+ Dessa forma,
+ o SimulationEngine poderá utilizar qualquer um desses modelos por meio de uma mesma interface,
+ permitindo a troca do modelo físico sem modificar a lógica principal da simulação.
+ Essa abordagem reduz o acoplamento entre os componentes e facilita a inclusão de novos modelos no futuro.
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\end_deeper
 \end_deeper
 \begin_layout Section
 Projeto Orientado a Objeto – POO
 \begin_inset Index idx
+range none
+pageformat default
 status open
 
 \begin_layout Plain Layout
@@ -618,6 +715,8 @@ POO
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status open
 
 \begin_layout Plain Layout
@@ -638,34 +737,41 @@ name "sec:Projeto-orientado-a-objeto"
 
 \begin_layout Standard
 O projeto orientado a objeto é a etapa posterior ao projeto do sistema.
- Baseia-se na análise, mas considera as decisões do projeto do sistema.
- Acrescenta a análise desenvolvida e as características da plataforma escolhida
- (hardware, sistema operacional e linguagem de softwareção).
- Passa pelo maior detalhamento do funcionamento do software, acrescentando
- atributos e métodos que envolvem a solução de problemas específicos não
- identificados durante a análise.
+ Baseia-se na análise,
+ mas considera as decisões do projeto do sistema.
+ Acrescenta a análise desenvolvida e as características da plataforma escolhida (hardware,
+ sistema operacional e linguagem de softwareção).
+ Passa pelo maior detalhamento do funcionamento do software,
+ acrescentando atributos e métodos que envolvem a solução de problemas específicos não identificados durante a análise.
 \end_layout
 
 \begin_layout Standard
-Envolve a otimização da estrutura de dados e dos algoritmos, a minimização
- do tempo de execução, de memória e de custos.
+Envolve a otimização da estrutura de dados e dos algoritmos,
+ a minimização do tempo de execução,
+ de memória e de custos.
  Existe um desvio de ênfase para os conceitos da plataforma selecionada.
  
 \end_layout
 
 \begin_layout Standard
-Exemplo: na análise você define que existe um método para salvar um arquivo
- em disco, define um atributo nomeDoArquivo, mas não se preocupa com detalhes
- específicos da linguagem.
- Já no projeto, você inclui as bibliotecas necessárias para acesso ao disco,
- cria um objeto específico para acessar o disco, podendo, portanto, acrescentar
- novas classes àquelas desenvolvidas na análise.
+Exemplo:
+ na análise você define que existe um método para salvar um arquivo em disco,
+ define um atributo nomeDoArquivo,
+ mas não se preocupa com detalhes específicos da linguagem.
+ Já no projeto,
+ você inclui as bibliotecas necessárias para acesso ao disco,
+ cria um objeto específico para acessar o disco,
+ podendo,
+ portanto,
+ acrescentar novas classes àquelas desenvolvidas na análise.
  
 \end_layout
 
 \begin_layout Subsubsection
 Efeitos do projeto no modelo
 \begin_inset Index idx
+range none
+pageformat default
 status open
 
 \begin_layout Plain Layout
@@ -685,8 +791,8 @@ name "subsec:Efeito-do-projeto-no-modelo-estrutural"
 \end_layout
 
 \begin_layout Itemize
-Adicionar nos diagramas de pacotes as bibliotecas e subsistemas selecionados
- no projeto do sistema (exemplo: a biblioteca gráfica selecionada).
+Adicionar nos diagramas de pacotes as bibliotecas e subsistemas selecionados no projeto do sistema (exemplo:
+ a biblioteca gráfica selecionada).
 \begin_inset Separator latexpar
 \end_inset
 
@@ -695,13 +801,19 @@ Adicionar nos diagramas de pacotes as bibliotecas e subsistemas selecionados
 
 \begin_deeper
 \begin_layout Itemize
-Neste projeto blablabla
+Neste projeto,
+ o modelo estrutural será atualizado para representar as dependências das bibliotecas utilizadas,
+ preservando os pacotes Application,
+ Simulation,
+ Physics,
+ Numerical,
+ Model,
+ I/O e Visualization.
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-Novas classes e associações oriundas das bibliotecas selecionadas e da linguagem
- escolhida devem ser acrescentadas ao modelo.
+Novas classes e associações oriundas das bibliotecas selecionadas e da linguagem escolhida devem ser acrescentadas ao modelo.
 \begin_inset Separator latexpar
 \end_inset
 
@@ -710,7 +822,10 @@ Novas classes e associações oriundas das bibliotecas selecionadas e da linguag
 
 \begin_deeper
 \begin_layout Itemize
-Neste projeto blablabla
+Neste projeto,
+ poderão ser adicionadas classes auxiliares relacionadas ao acesso a arquivos,
+ operações matemáticas e visualização,
+ sem alterar as responsabilidades das classes principais já identificadas.
 \end_layout
 
 \end_deeper
@@ -724,13 +839,20 @@ Estabelecer as dependências e restrições associadas à plataforma escolhida.
 
 \begin_deeper
 \begin_layout Itemize
-Neste projeto blablabla
+Neste projeto,
+ o núcleo científico,
+ composto principalmente por Physics,
+ Numerical e Simulation,
+ deverá permanecer independente da interface gráfica.
+ As dependências de Qt ficarão concentradas nos componentes responsáveis pela interface e visualização.
 \end_layout
 
 \end_deeper
 \begin_layout Subsubsection
 Efeitos do projeto no modelo
 \begin_inset Index idx
+range none
+pageformat default
 status open
 
 \begin_layout Plain Layout
@@ -750,8 +872,7 @@ name "subsec:Efeito-do-projeto-no-modelo-dinamico"
 \end_layout
 
 \begin_layout Itemize
-Revisar os diagramas de seqüência e de comunicação considerando a plataforma
- escolhida.
+Revisar os diagramas de seqüência e de comunicação considerando a plataforma escolhida.
 \begin_inset Separator latexpar
 \end_inset
 
@@ -760,13 +881,19 @@ Revisar os diagramas de seqüência e de comunicação considerando a plataforma
 
 \begin_deeper
 \begin_layout Itemize
-Neste projeto blablabla
+Neste projeto,
+ os diagramas permanecem compatíveis com a solução adotada.
+ As mensagens entre ApplicationController,
+ SimulationEngine,
+ WaveModel,
+ NumericalSolver,
+ FileManager e ResultVisualizer serão implementadas por chamadas entre objetos C++.
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-Verificar a necessidade de se revisar, ampliar e adicionar novos diagramas
- de máquinas de estado e de atividades.
+Verificar a necessidade de se revisar,
+ ampliar e adicionar novos diagramas de máquinas de estado e de atividades.
  
 \begin_inset Separator latexpar
 \end_inset
@@ -776,13 +903,16 @@ Verificar a necessidade de se revisar, ampliar e adicionar novos diagramas
 
 \begin_deeper
 \begin_layout Itemize
-Neste projeto blablabla
+Neste projeto,
+ os diagramas de estados do SimulationEngine e de atividades dos cálculos permanecem válidos e não necessitam de alterações conceituais.
 \end_layout
 
 \end_deeper
 \begin_layout Subsubsection
 Efeitos do projeto nos atributos
 \begin_inset Index idx
+range none
+pageformat default
 status open
 
 \begin_layout Plain Layout
@@ -802,9 +932,12 @@ name "subsec:Efeito-do-projeto-nos-atributos"
 \end_layout
 
 \begin_layout Itemize
-Atributos novos podem ser adicionados a uma classe, como, por exemplo, atributos
- específicos de uma determinada linguagem de softwareção (acesso a disco,
- ponteiros, constantes e informações correlacionadas).
+Atributos novos podem ser adicionados a uma classe,
+ como,
+ por exemplo,
+ atributos específicos de uma determinada linguagem de softwareção (acesso a disco,
+ ponteiros,
+ constantes e informações correlacionadas).
 \begin_inset Separator latexpar
 \end_inset
 
@@ -813,13 +946,17 @@ Atributos novos podem ser adicionados a uma classe, como, por exemplo, atributos
 
 \begin_deeper
 \begin_layout Itemize
-Neste projeto blablabla
+Neste projeto,
+ as propriedades físicas e os resultados numéricos utilizarão principalmente o tipo double.
+ Valores complexos serão representados por std::complex<double> e conjuntos de valores por std::vector<double>.
 \end_layout
 
 \end_deeper
 \begin_layout Subsubsection
 Efeitos do projeto nos métodos
 \begin_inset Index idx
+range none
+pageformat default
 status open
 
 \begin_layout Plain Layout
@@ -830,6 +967,8 @@ métodos
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status open
 
 \begin_layout Plain Layout
@@ -842,10 +981,11 @@ Efeitos do projeto nos métodos
 \end_layout
 
 \begin_layout Itemize
-Em função da plataforma escolhida, verifique as possíveis alterações nos
- métodos.
- O projeto do sistema costuma afetar os métodos de acesso aos diversos dispositi
-vos (exemplo: hd, rede).
+Em função da plataforma escolhida,
+ verifique as possíveis alterações nos métodos.
+ O projeto do sistema costuma afetar os métodos de acesso aos diversos dispositivos (exemplo:
+ hd,
+ rede).
 \begin_inset Separator latexpar
 \end_inset
 
@@ -854,16 +994,21 @@ vos (exemplo: hd, rede).
 
 \begin_deeper
 \begin_layout Itemize
-Neste projeto blablabla
+Neste projeto,
+ os métodos de leitura e escrita de arquivos ficarão concentrados em FileManager,
+ enquanto os métodos relacionados à interface e apresentação dos resultados ficarão em ResultVisualizer.
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-De maneira geral os métodos devem ser divididos em dois tipos: i) tomada
- de decisões, métodos políticos ou de controle; devem ser claros, legíveis,
+De maneira geral os métodos devem ser divididos em dois tipos:
+ i) tomada de decisões,
+ métodos políticos ou de controle;
+ devem ser claros,
+ legíveis,
  flexíveis e usam polimorfismo.
- ii) realização de processamentos, podem ser otimizados e em alguns casos
- o polimorfismo deve ser evitado.
+ ii) realização de processamentos,
+ podem ser otimizados e em alguns casos o polimorfismo deve ser evitado.
  
 \begin_inset Separator latexpar
 \end_inset
@@ -873,7 +1018,9 @@ De maneira geral os métodos devem ser divididos em dois tipos: i) tomada
 
 \begin_deeper
 \begin_layout Itemize
-Neste projeto blablabla
+Neste projeto,
+ ApplicationController e SimulationEngine concentrarão o controle do fluxo,
+ enquanto WaveModel e NumericalSolver concentrarão os métodos responsáveis pelos cálculos científicos.
 \end_layout
 
 \end_deeper
@@ -889,13 +1036,20 @@ Algoritmos complexos podem ser subdivididos.
 
 \begin_deeper
 \begin_layout Itemize
-Neste projeto blablabla
+Neste projeto,
+ os cálculos serão divididos em operações menores,
+ como cálculo dos coeficientes,
+ construção do sistema matemático,
+ obtenção das raízes,
+ cálculo da velocidade de fase,
+ cálculo da atenuação e identificação das ondas P1,
+ P2 e T.
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-Responda a pergunta: os métodos da classes estão dando resposta às responsabilid
-ades da classe?
+Responda a pergunta:
+ os métodos da classes estão dando resposta às responsabilidades da classe?
 \begin_inset Separator latexpar
 \end_inset
 
@@ -904,12 +1058,18 @@ ades da classe?
 
 \begin_deeper
 \begin_layout Itemize
-Neste projeto blablabla
+Neste projeto,
+ os métodos estão alinhados às responsabilidades das classes.
+ SimulationEngine coordena a simulação,
+ WaveModel representa os modelos físicos,
+ NumericalSolver realiza os cálculos numéricos,
+ FileManager gerencia arquivos e ResultVisualizer apresenta os resultados.
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-Revise os diagramas de classes, de seqüência e de máquina de estado.
+Revise os diagramas de classes,
+ de seqüência e de máquina de estado.
 \begin_inset Separator latexpar
 \end_inset
 
@@ -918,13 +1078,17 @@ Revise os diagramas de classes, de seqüência e de máquina de estado.
 
 \begin_deeper
 \begin_layout Itemize
-Neste projeto blablabla
+Neste projeto,
+ os diagramas de classes,
+ sequência e máquina de estados foram revisados e permanecem coerentes com as responsabilidades e dependências definidas para as classes do ThermoWave 1D.
 \end_layout
 
 \end_deeper
 \begin_layout Subsubsection
 Efeitos do projeto nas heranças
 \begin_inset Index idx
+range none
+pageformat default
 status open
 
 \begin_layout Plain Layout
@@ -935,6 +1099,8 @@ heranças
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status open
 
 \begin_layout Plain Layout
@@ -945,6 +1111,8 @@ Efeitos do projeto nas heranças
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status open
 
 \begin_layout Plain Layout
@@ -957,8 +1125,7 @@ Heranças
 \end_layout
 
 \begin_layout Itemize
-Reorganização das classes e dos métodos (criar métodos genéricos com parâmetros
- que nem sempre são necessários e englobam métodos existentes).
+Reorganização das classes e dos métodos (criar métodos genéricos com parâmetros que nem sempre são necessários e englobam métodos existentes).
  
 \begin_inset Separator latexpar
 \end_inset
@@ -968,13 +1135,14 @@ Reorganização das classes e dos métodos (criar métodos genéricos com parâm
 
 \begin_deeper
 \begin_layout Itemize
-Neste projeto blablabla
+Neste projeto,
+ as classes manterão responsabilidades específicas,
+ evitando a criação de métodos genéricos excessivamente abrangentes apenas para reaproveitamento de código.
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-Abstração do comportamento comum (duas classes podem ter uma superclasse
- em comum).
+Abstração do comportamento comum (duas classes podem ter uma superclasse em comum).
  
 \begin_inset Separator latexpar
 \end_inset
@@ -984,13 +1152,15 @@ Abstração do comportamento comum (duas classes podem ter uma superclasse
 
 \begin_deeper
 \begin_layout Itemize
-Neste projeto blablabla
+Neste projeto,
+ a classe WaveModel representará o comportamento comum dos modelos físicos,
+ funcionando como classe base de BiotNonDissipativeModel,
+ BiotDissipativeModel e BiotJKDModel.
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-Utilização de delegação para compartilhar a implementação (quando você cria
- uma herança irreal para reaproveitar código).
+Utilização de delegação para compartilhar a implementação (quando você cria uma herança irreal para reaproveitar código).
  Usar com cuidado.
 \begin_inset Separator latexpar
 \end_inset
@@ -1000,7 +1170,11 @@ Utilização de delegação para compartilhar a implementação (quando você cr
 
 \begin_deeper
 \begin_layout Itemize
-Neste projeto blablabla
+Neste projeto,
+ será priorizada a composição e a delegação quando não existir uma relação real de especialização.
+ SimulationEngine,
+ por exemplo,
+ utilizará NumericalSolver em vez de herdar dele.
 \end_layout
 
 \end_deeper
@@ -1014,13 +1188,17 @@ Revise as heranças no diagrama de classes.
 
 \begin_deeper
 \begin_layout Itemize
-Neste projeto blablabla
+Neste projeto,
+ a principal relação de herança permanecerá entre WaveModel e os três modelos físicos especializados,
+ por representar uma relação válida de generalização e especialização.
 \end_layout
 
 \end_deeper
 \begin_layout Subsubsection
 Efeitos do projeto nas associações
 \begin_inset Index idx
+range none
+pageformat default
 status open
 
 \begin_layout Plain Layout
@@ -1031,6 +1209,8 @@ Efeitos do projeto nas associações
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status open
 
 \begin_layout Plain Layout
@@ -1054,16 +1234,19 @@ Deve-se definir na fase de projeto como as associações serão implementadas,
 
 \begin_deeper
 \begin_layout Itemize
-Neste projeto blablabla
+Neste projeto,
+ as associações serão implementadas por objetos membros,
+ referências ou ponteiros inteligentes,
+ conforme a responsabilidade e o tempo de vida dos objetos envolvidos.
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-Se existe uma relação de "muitos", pode-se implementar a associação com
- a utilização de um dicionário, que é um mapa das associações entre objetos.
- Assim, o objeto A acessa o dicionário fornecendo uma chave (um nome para
- o objeto que deseja acessar) e o dicionário retorna um valor (um ponteiro)
- para o objeto correto.
+Se existe uma relação de "muitos",
+ pode-se implementar a associação com a utilização de um dicionário,
+ que é um mapa das associações entre objetos.
+ Assim,
+ o objeto A acessa o dicionário fornecendo uma chave (um nome para o objeto que deseja acessar) e o dicionário retorna um valor (um ponteiro) para o objeto correto.
  
 \begin_inset Separator latexpar
 \end_inset
@@ -1073,7 +1256,9 @@ Se existe uma relação de "muitos", pode-se implementar a associação com
 
 \begin_deeper
 \begin_layout Itemize
-Neste projeto blablabla
+Neste projeto,
+ para conjuntos ordenados de frequências e resultados serão utilizados principalmente contêineres std::vector.
+ Não foi identificada necessidade de um dicionário global de objetos.
 \end_layout
 
 \end_deeper
@@ -1088,13 +1273,18 @@ Evite percorrer várias associações para acessar dados de classes distantes.
 
 \begin_deeper
 \begin_layout Itemize
-Neste projeto blablabla
+Neste projeto,
+ os componentes terão acesso direto apenas aos colaboradores necessários.
+ SimulationEngine se relacionará diretamente com WaveModel e NumericalSolver,
+ reduzindo cadeias de dependências.
 \end_layout
 
 \end_deeper
 \begin_layout Subsubsection
 Efeitos do projeto nas otimizações
 \begin_inset Index idx
+range none
+pageformat default
 status open
 
 \begin_layout Plain Layout
@@ -1108,8 +1298,7 @@ otimizações
 
 \begin_layout Itemize
 Faça uma análise de aspectos relativos à otimização do sistema.
- Lembrando que a otimização deve ser desenvolvida por analistas/desenvolvedores
- experientes.
+ Lembrando que a otimização deve ser desenvolvida por analistas/desenvolvedores experientes.
 \begin_inset Separator latexpar
 \end_inset
 
@@ -1118,13 +1307,14 @@ Faça uma análise de aspectos relativos à otimização do sistema.
 
 \begin_deeper
 \begin_layout Itemize
-Neste projeto blablabla
+Neste projeto,
+ a otimização será concentrada no núcleo numérico após a validação científica dos resultados,
+ evitando otimizações prematuras.
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-Identifique pontos a serem otimizados em que podem ser utilizados processos
- concorrentes.
+Identifique pontos a serem otimizados em que podem ser utilizados processos concorrentes.
 \begin_inset Separator latexpar
 \end_inset
 
@@ -1133,7 +1323,8 @@ Identifique pontos a serem otimizados em que podem ser utilizados processos
 
 \begin_deeper
 \begin_layout Itemize
-Neste projeto blablabla
+Neste projeto,
+ os cálculos realizados para diferentes valores de frequência constituem o principal candidato a processamento paralelo.
 \end_layout
 
 \end_deeper
@@ -1141,10 +1332,19 @@ Neste projeto blablabla
 Pense em incluir bibliotecas otimizadas.
 \end_layout
 
+\begin_deeper
 \begin_layout Itemize
-Se o acesso a determinados objetos (atributos/métodos) requer um caminho
- longo (exemplo: A->B->C->D.atributo), pense em incluir associações extras
- (exemplo: A-D.atributo).
+Neste projeto,
+ a biblioteca Eigen poderá ser utilizada para operações de álgebra linear,
+ aproveitando implementações otimizadas e reduzindo a necessidade de desenvolver rotinas matriciais fundamentais manualmente.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Se o acesso a determinados objetos (atributos/métodos) requer um caminho longo (exemplo:
+ A->B->C->D.atributo),
+ pense em incluir associações extras (exemplo:
+ A-D.atributo).
 \begin_inset Separator latexpar
 \end_inset
 
@@ -1153,7 +1353,9 @@ Se o acesso a determinados objetos (atributos/métodos) requer um caminho
 
 \begin_deeper
 \begin_layout Itemize
-Neste projeto blablabla
+Neste projeto,
+ a arquitetura foi organizada de forma que os principais componentes possuam acesso direto aos objetos necessários,
+ não sendo identificada inicialmente a necessidade de novas associações.
 \end_layout
 
 \end_deeper
@@ -1167,7 +1369,8 @@ Atributos auxiliares podem ser incluídos.
 
 \begin_deeper
 \begin_layout Itemize
-Neste projeto blablabla
+Neste projeto,
+ poderão ser adicionados atributos auxiliares para armazenar coeficientes e resultados intermediários quando isso reduzir cálculos repetidos.
 \end_layout
 
 \end_deeper
@@ -1181,7 +1384,9 @@ A ordem de execução pode ser alterada.
 
 \begin_deeper
 \begin_layout Itemize
-Neste projeto blablabla
+Neste projeto,
+ operações independentes poderão ser reorganizadas ou executadas paralelamente,
+ desde que isso não modifique os resultados matemáticos da simulação.
 \end_layout
 
 \end_deeper
@@ -1195,21 +1400,23 @@ Revise as associações nos diagramas de classes.
 
 \begin_deeper
 \begin_layout Itemize
-Neste projeto blablabla
+Neste projeto,
+ as associações foram revisadas procurando manter baixo acoplamento entre o núcleo científico,
+ a interface e os componentes de entrada e saída.
 \end_layout
 
 \end_deeper
 \begin_layout Standard
-Depois de revisados os diagramas da análise você pode montar dois diagramas
- relacionados à infraestrutura do sistema.
- As dependências dos arquivos e bibliotecas podem ser descritos pelo diagrama
- de componentes, e as relações e dependências entre o sistema e o hardware
- podem ser ilustradas com o diagrama de implantação.
+Depois de revisados os diagramas da análise você pode montar dois diagramas relacionados à infraestrutura do sistema.
+ As dependências dos arquivos e bibliotecas podem ser descritos pelo diagrama de componentes,
+ e as relações e dependências entre o sistema e o hardware podem ser ilustradas com o diagrama de implantação.
 \end_layout
 
 \begin_layout Section
 Diagrama de Componentes
 \begin_inset Index idx
+range none
+pageformat default
 status open
 
 \begin_layout Plain Layout
@@ -1229,12 +1436,24 @@ name "sec:Diagrama-de-componentes"
 \end_layout
 
 \begin_layout Standard
-O diagrama de componentes mostra a forma como os componentes do software
- se relacionam, suas dependências.
- Inclui itens como: componentes, subsistemas, executáveis, nós, associações,
- dependências, generalizações, restrições e notas.
- Exemplos de componentes são bibliotecas estáticas, bibliotecas dinâmicas,
- dlls, componentes Java, executáveis, arquivos de disco, código-fonte.
+O diagrama de componentes mostra a forma como os componentes do software se relacionam,
+ suas dependências.
+ Inclui itens como:
+ componentes,
+ subsistemas,
+ executáveis,
+ nós,
+ associações,
+ dependências,
+ generalizações,
+ restrições e notas.
+ Exemplos de componentes são bibliotecas estáticas,
+ bibliotecas dinâmicas,
+ dlls,
+ componentes Java,
+ executáveis,
+ arquivos de disco,
+ código-fonte.
  
 \end_layout
 
@@ -1243,23 +1462,26 @@ Veja na Figura
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "cap:Diagrama-de-componentes"
+nolink "false"
 
 \end_inset
 
  um exemplo de diagrama de componentes.
- Observe que este inclui muitas dependências, ilustrando as relações entre
- os arquivos.
- Por exemplo: o subsistema biblioteca inclui os arquivos das classes A e
- B, e a geração dos objetos A.obj e B.obj depende dos arquivos A.h, A.cpp, B.h
- e B.cpp.
+ Observe que este inclui muitas dependências,
+ ilustrando as relações entre os arquivos.
+ Por exemplo:
+ o subsistema biblioteca inclui os arquivos das classes A e B,
+ e a geração dos objetos A.obj e B.obj depende dos arquivos A.h,
+ A.cpp,
+ B.h e B.cpp.
  A geração da biblioteca depende dos arquivos A.obj e B.obj.
- O subsistema biblioteca Qt, um subsistema exerno, inclui os arquivos de
- código da biblioteca Qt e a biblioteca em si.
- O subsistema banco de dados representa o banco de dados utilizado pelo
- sistema e tem uma interface de acesso que é utilizada pelo software para
- acesso aos dados armazenados no banco de dados.
- O software executável a ser gerado depende da biblioteca gerada, dos arquivos
- da biblioteca Qt, do módulo de arquivos MinhaJanela e do banco de dados.
+ O subsistema biblioteca Qt,
+ um subsistema exerno,
+ inclui os arquivos de código da biblioteca Qt e a biblioteca em si.
+ O subsistema banco de dados representa o banco de dados utilizado pelo sistema e tem uma interface de acesso que é utilizada pelo software para acesso aos dados armazenados no banco de dados.
+ O software executável a ser gerado depende da biblioteca gerada,
+ dos arquivos da biblioteca Qt,
+ do módulo de arquivos MinhaJanela e do banco de dados.
 \end_layout
 
 \begin_layout Standard
@@ -1267,24 +1489,23 @@ Algumas observações úteis para o diagrama de componentes:
 \end_layout
 
 \begin_layout Itemize
-De posse do diagrama de componentes, temos a lista de todos os arquivos
- necessários para compilar e rodar o software.
+De posse do diagrama de componentes,
+ temos a lista de todos os arquivos necessários para compilar e rodar o software.
 \end_layout
 
 \begin_layout Itemize
-Observe que um assunto/pacote pode se transformar em uma biblioteca e será
- incluído no diagrama de componentes.
+Observe que um assunto/pacote pode se transformar em uma biblioteca e será incluído no diagrama de componentes.
 \end_layout
 
 \begin_layout Itemize
-A ligação entre componentes pode incluir um estereótipo indicando o tipo
- de relacionamento ou algum protocolo utilizado.
+A ligação entre componentes pode incluir um estereótipo indicando o tipo de relacionamento ou algum protocolo utilizado.
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-Na versão final apagar este texto copiado do livro; e colocado aqui para
- lhe auxiliar; deixar somente o que é pertinente ao trabalho
+Na versão final apagar este texto copiado do livro;
+ e colocado aqui para lhe auxiliar;
+ deixar somente o que é pertinente ao trabalho
 \end_layout
 
 \end_inset
@@ -1293,12 +1514,21 @@ Na versão final apagar este texto copiado do livro; e colocado aqui para
 \end_layout
 
 \begin_layout Standard
-Neste projeto blablabla
+Neste projeto,
+ o diagrama de componentes representa os principais módulos físicos do ThermoWave 1D e suas dependências.
+ O executável da aplicação utiliza os componentes Application,
+ Simulation,
+ Physics,
+ Numerical,
+ Model,
+ I/O e Visualization,
+ além das bibliotecas externas necessárias para a implementação.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
 placement H
+alignment document
 wide false
 sideways false
 status open
@@ -1306,9 +1536,10 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename imagens/DiagramaDeComponentes-Assuntos-Pacotes.png
+	filename Projeto Software/diagrama_de_componentes_assuntos_pacotes.png
 	lyxscale 40
-	width 100text%
+	width 100pheight%
+	height 90page%
 
 \end_inset
 
@@ -1342,6 +1573,8 @@ name "cap:Diagrama-de-componentes"
 \begin_layout Section
 Diagrama de Implantação
 \begin_inset Index idx
+range none
+pageformat default
 status open
 
 \begin_layout Plain Layout
@@ -1352,6 +1585,8 @@ Diagrama de implantação
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status open
 
 \begin_layout Plain Layout
@@ -1371,18 +1606,24 @@ name "sec:Diagrama-de-execução"
 \end_layout
 
 \begin_layout Standard
-O diagrama de implantação é um diagrama de alto nível que inclui relações
- entre o sistema e o hardware e que se preocupa com os aspectos da arquitetura
- computacional escolhida.
- Seu enfoque é o hardware, a configuração dos nós em tempo de execução.
+O diagrama de implantação é um diagrama de alto nível que inclui relações entre o sistema e o hardware e que se preocupa com os aspectos da arquitetura computacional escolhida.
+ Seu enfoque é o hardware,
+ a configuração dos nós em tempo de execução.
  
 \end_layout
 
 \begin_layout Standard
-O diagrama de implantação deve incluir os elementos necessários para que
- o sistema seja colocado em funcionamento: computador, periféricos, processadore
-s, dispositivos, nós, relacionamentos de dependência, associação, componentes,
- subsistemas, restrições e notas.
+O diagrama de implantação deve incluir os elementos necessários para que o sistema seja colocado em funcionamento:
+ computador,
+ periféricos,
+ processadores,
+ dispositivos,
+ nós,
+ relacionamentos de dependência,
+ associação,
+ componentes,
+ subsistemas,
+ restrições e notas.
 \end_layout
 
 \begin_layout Standard
@@ -1390,14 +1631,14 @@ Veja na Figura
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "cap:Diagrama-de-implantação."
+nolink "false"
 
 \end_inset
 
  um exemplo de diagrama de implantação de um cluster.
  Observe a presença de um servidor conectado a um switch.
  Os nós do cluster (ou clientes) também estão conectados ao switch.
- Os resultados das simulações são armazenados em um servidor de arquivos
- (
+ Os resultados das simulações são armazenados em um servidor de arquivos (
 \emph on
 storage
 \emph default
@@ -1405,13 +1646,22 @@ storage
 \end_layout
 
 \begin_layout Standard
-Pode-se utilizar uma anotação de localização para identificar onde determinado
- componente está residente, por exemplo {localização: sala 3}.
+Pode-se utilizar uma anotação de localização para identificar onde determinado componente está residente,
+ por exemplo {localização:
+ sala 3}.
+\end_layout
+
+\begin_layout Standard
+Neste projeto,
+ o ThermoWave 1D será implantado como uma aplicação desktop executada localmente no computador do usuário.
+ O sistema utilizará o processador e a memória RAM para realizar os cálculos científicos e o sistema de arquivos local para leitura dos parâmetros de entrada,
+ armazenamento dos resultados numéricos e gravação dos gráficos gerados.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
 placement H
+alignment document
 wide false
 sideways false
 status open
@@ -1419,9 +1669,9 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename imagens/DiagramaDeExecucao.png
+	filename Projeto Software/diagrama_de_execução.png
 	lyxscale 50
-	width 100text%
+	scale 10
 
 \end_inset
 
@@ -1453,7 +1703,8 @@ name "cap:Diagrama-de-implantação."
 \end_layout
 
 \begin_layout Description
-Nota: 
+Nota:
+ 
 \begin_inset space ~
 \end_inset
 
@@ -1461,10 +1712,14 @@ Nota:
 \begin_inset Newline newline
 \end_inset
 
-Não perca de vista a visão do todo; do projeto de engenharia como um todo.
- Cada capítulo, cada seção, cada parágrafo deve se encaixar.
+Não perca de vista a visão do todo;
+ do projeto de engenharia como um todo.
+ Cada capítulo,
+ cada seção,
+ cada parágrafo deve se encaixar.
  Este é um diferencial fundamental do engenheiro em relação ao técnico,
- a capacidade de desenvolver projetos, de ver o todo e suas diferentes partes,
+ a capacidade de desenvolver projetos,
+ de ver o todo e suas diferentes partes,
  de modelar processos/sistemas/produtos de engenharia.
 \end_layout
 
