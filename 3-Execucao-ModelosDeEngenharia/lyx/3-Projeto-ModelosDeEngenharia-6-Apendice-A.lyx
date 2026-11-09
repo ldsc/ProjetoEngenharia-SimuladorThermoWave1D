@@ -1,7 +1,9 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.5 created this file. For more info see https://www.lyx.org/
+\lyxformat 643
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass extbook
 \begin_preamble
 \usepackage {graphicx}
@@ -26,21 +28,25 @@
 \options normaltoc, sumarioincompleto
 \use_default_options false
 \master DocumentoMestre-Trabalho-ProgramacaoPratica.lyx
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language brazilian
 \language_package auto
 \inputencoding utf8
-\fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -62,7 +68,7 @@
 \pdf_colorlinks false
 \pdf_backref page
 \pdf_pdfusetitle true
-\papersize a4paper
+\papersize a4
 \use_geometry true
 \use_package amsmath 1
 \use_package amssymb 1
@@ -81,8 +87,19 @@
 \use_indices false
 \paperorientation portrait
 \suppress_date false
-\justification true
-\use_refstyle 0
+\justification default
+\crossref_package prettyref
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\backgroundcolor none
+\fontcolor none
+\notefontcolor lightgray
+\boxbgcolor red
+\table_border_color default
+\table_odd_row_color default
+\table_even_row_color default
+\table_alt_row_colors_start 1
 \index Índice
 \shortcut idx
 \color #008000
@@ -97,21 +114,30 @@
 \tocdepth 1
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle fancy
+\tablestyle default
 \tracking_changes false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\docbook_mathml_version 0
 \end_header
 
 \begin_body
 
 \begin_layout Chapter
-Título do Apêndice
+Simulador de Ondas em Meios Poroelásticos
 \end_layout
 
 \begin_layout Standard
@@ -120,11 +146,11 @@ status open
 
 \begin_layout Plain Layout
 
-
 \backslash
 lhead{Apêndice 
 \backslash
-thechapter: Titulo do Apêndice}
+thechapter:
+ Simulador de Ondas em Meios Poroelásticos}
 \backslash
 rhead{
 \backslash
@@ -133,54 +159,234 @@ thepage}
 
 \end_inset
 
-Descreve-se neste apêndice ...
-\end_layout
 
-\begin_layout Itemize
-Os anexos ou apêndices contém material auxiliar.
- Por exemplo, tabelas, gráficos, resultados de experimentos, algoritmos,
- códigos e simulações.
-\end_layout
-
-\begin_layout Itemize
-Um apêndice pode incluir assuntos mais gerais (geral demais para estar no
- núcleo do trabalho) ou mais específicos (detalhado demais para estar no
- núcleo do trabalho).
-\end_layout
-
-\begin_layout Itemize
-Pode conter um artigo de auxílio fundamental ao trabalho.
- 
-\end_layout
-
-\begin_layout Itemize
-Pode conter artigos publicados.
-\end_layout
-
-\begin_layout Itemize
-[tudo aquilo que for importante para a tese mas não essencial, deve ser
- colocado em apêndices]
-\end_layout
-
-\begin_layout Itemize
-[como exemplo, revisão de metodologias, técnicas, modelos matemáticos, ítens
- desenvolvidos por terceiros]
-\end_layout
-
-\begin_layout Itemize
-[algoritmos e programas devem ser colocados no apêndice]
-\end_layout
-
-\begin_layout Itemize
-[imagens detalhadas de programas desenvolvidos devem ser colocados no apêndice]
-\end_layout
-
-\begin_layout Section
-Sub-Titulo do Apêndice
 \end_layout
 
 \begin_layout Standard
-.....conteúdo..
+Descreve-se neste apêndice o simulador computacional desenvolvido em C++ para o estudo da propagação de ondas em meios porosos saturados por fluido.
+ O programa permite que o usuário informe manualmente os parâmetros necessários à simulação,
+ selecione o modelo poroelástico a ser utilizado e obtenha,
+ para diferentes frequências,
+ as velocidades de fase e as atenuações das ondas P1,
+ P2 e T.
+\end_layout
+
+\begin_layout Itemize
+O sistema solicita ao usuário,
+ durante a execução,
+ a frequência inicial,
+ a frequência final e o número de pontos que serão utilizados na simulação.
+\end_layout
+
+\begin_layout Itemize
+O sistema solicita manualmente as propriedades do meio poroso necessárias aos cálculos,
+ incluindo densidade da rocha,
+ porosidade,
+ permeabilidade,
+ tortuosidade e expoente de cimentação.
+\end_layout
+
+\begin_layout Itemize
+O sistema solicita as propriedades do fluido,
+ incluindo densidade,
+ viscosidade e coeficiente térmico,
+ além das propriedades térmicas utilizadas pelo modelo.
+\end_layout
+
+\begin_layout Itemize
+O usuário pode selecionar entre três modelos poroelásticos:
+ ModeloBiotNaoDissipativo,
+ ModeloBiotDissipativo e ModeloBiotJKD.
+\end_layout
+
+\begin_layout Itemize
+A classe SimuladorOndasPoroelasticas é responsável por executar a simulação ao longo da faixa de frequências definida pelo usuário.
+\end_layout
+
+\begin_layout Itemize
+A classe abstrata ModeloPoroelastico estabelece a operação comum utilizada pelos modelos físicos,
+ enquanto suas classes derivadas implementam as diferentes formulações consideradas no programa.
+\end_layout
+
+\begin_layout Itemize
+A classe SolucionadorEquacoesPoroelasticas reúne as operações numéricas necessárias para a resolução das equações empregadas pelos modelos poroelásticos.
+\end_layout
+
+\begin_layout Itemize
+Os resultados são armazenados em ResultadoSimulacao e incluem,
+ para cada frequência analisada,
+ as velocidades de fase das ondas P1,
+ P2 e T e suas respectivas atenuações.
+\end_layout
+
+\begin_layout Section
+Funcionamento do Simulador
+\end_layout
+
+\begin_layout Standard
+Durante a execução do programa,
+ os dados necessários à simulação são fornecidos manualmente pelo usuário por meio do terminal.
+ Inicialmente são informados os parâmetros que definem a faixa de frequências:
+ frequência inicial,
+ frequência final e número de pontos.
+ Esses valores são armazenados em ParametrosSimulacao.
+\end_layout
+
+\begin_layout Standard
+Em seguida,
+ são solicitadas as propriedades físicas necessárias aos modelos.
+ Essas informações são armazenadas em PropriedadesMeioPoroso e incluem propriedades relacionadas à rocha,
+ ao fluido e ao comportamento térmico do meio.
+\end_layout
+
+\begin_layout Standard
+Após o fornecimento dos parâmetros,
+ o usuário seleciona o modelo físico que será empregado na simulação.
+ As opções disponíveis são o modelo de Biot não dissipativo,
+ o modelo de Biot dissipativo e o modelo Biot-JKD,
+ representados respectivamente pelas classes ModeloBiotNaoDissipativo,
+ ModeloBiotDissipativo e ModeloBiotJKD.
+\end_layout
+
+\begin_layout Standard
+O SimuladorOndasPoroelasticas utiliza os valores informados para gerar a faixa de frequências da análise.
+ Para cada frequência,
+ o modelo selecionado é executado e são calculadas as propriedades correspondentes aos três modos de onda considerados:
+ P1,
+ correspondente à onda compressional rápida;
+ P2,
+ correspondente à onda compressional lenta;
+ e T,
+ correspondente à onda transversal.
+\end_layout
+
+\begin_layout Standard
+Para cada frequência analisada,
+ são obtidos os seguintes resultados:
+\end_layout
+
+\begin_layout Standard
+velocidade de fase da onda P1;
+\end_layout
+
+\begin_layout Standard
+velocidade de fase da onda P2;
+\end_layout
+
+\begin_layout Standard
+velocidade de fase da onda T;
+\end_layout
+
+\begin_layout Standard
+atenuação da onda P1;
+\end_layout
+
+\begin_layout Standard
+atenuação da onda P2;
+\end_layout
+
+\begin_layout Standard
+atenuação da onda T.
+\end_layout
+
+\begin_layout Standard
+Esses valores são armazenados em ResultadoSimulacao,
+ juntamente com as respectivas frequências.
+\end_layout
+
+\begin_layout Standard
+De forma simplificada,
+ o funcionamento do programa pode ser representado pela seguinte sequência:
+\end_layout
+
+\begin_layout Standard
+Entrada manual dos parâmetros → armazenamento dos dados → seleção do modelo poroelástico → geração da faixa de frequências → execução do modelo para cada frequência → cálculo das velocidades de fase e atenuações → armazenamento dos resultados.
+\end_layout
+
+\begin_layout Standard
+A interação inicial com o programa ocorre diretamente pelo terminal,
+ por exemplo:
+\end_layout
+
+\begin_layout Standard
+Informe a frequência inicial (Hz):
+\end_layout
+
+\begin_layout Standard
+Informe a frequência final (Hz):
+\end_layout
+
+\begin_layout Standard
+Informe o número de pontos:
+\end_layout
+
+\begin_layout Standard
+Informe a densidade da rocha:
+\end_layout
+
+\begin_layout Standard
+Informe a porosidade:
+\end_layout
+
+\begin_layout Standard
+Informe a permeabilidade:
+\end_layout
+
+\begin_layout Standard
+Informe a tortuosidade:
+\end_layout
+
+\begin_layout Standard
+Informe o expoente de cimentação:
+\end_layout
+
+\begin_layout Standard
+Informe a densidade do fluido:
+\end_layout
+
+\begin_layout Standard
+Informe a viscosidade:
+\end_layout
+
+\begin_layout Standard
+Informe o coeficiente térmico:
+\end_layout
+
+\begin_layout Standard
+Informe a condutividade térmica:
+\end_layout
+
+\begin_layout Standard
+Informe o calor específico:
+\end_layout
+
+\begin_layout Standard
+Informe a temperatura de referência:
+\end_layout
+
+\begin_layout Standard
+Informe o tempo de relaxação:
+\end_layout
+
+\begin_layout Standard
+Selecione o modelo poroelástico:
+\end_layout
+
+\begin_layout Standard
+1 - Biot não dissipativo
+\end_layout
+
+\begin_layout Standard
+2 - Biot dissipativo
+\end_layout
+
+\begin_layout Standard
+3 - Biot-JKD
+\end_layout
+
+\begin_layout Standard
+Após o preenchimento dos dados e a escolha do modelo,
+ o sistema executa a simulação e apresenta os resultados correspondentes à faixa de frequências especificada pelo usuário.
 \end_layout
 
 \end_body
