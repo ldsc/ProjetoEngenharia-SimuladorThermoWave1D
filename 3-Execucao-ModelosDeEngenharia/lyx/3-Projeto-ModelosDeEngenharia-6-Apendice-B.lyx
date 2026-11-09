@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.5 created this file. For more info see https://www.lyx.org/
+\lyxformat 643
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -28,11 +28,11 @@
 \options normaltoc, sumarioincompleto
 \use_default_options false
 \master 3-Projeto-ModelosDeEngenharia-Master.lyx
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language brazilian
 \language_package auto
 \inputencoding utf8
-\fontencoding global
+\fontencoding auto
 \font_roman "default" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
@@ -40,7 +40,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -66,7 +68,7 @@
 \pdf_colorlinks false
 \pdf_backref page
 \pdf_pdfusetitle true
-\papersize a4paper
+\papersize a4
 \use_geometry true
 \use_package amsmath 1
 \use_package amssymb 1
@@ -85,9 +87,19 @@
 \use_indices false
 \paperorientation portrait
 \suppress_date false
-\justification true
-\use_refstyle 0
+\justification default
+\crossref_package prettyref
+\use_formatted_ref 0
 \use_minted 0
+\use_lineno 0
+\backgroundcolor none
+\fontcolor none
+\notefontcolor lightgray
+\boxbgcolor red
+\table_border_color default
+\table_odd_row_color default
+\table_even_row_color default
+\table_alt_row_colors_start 1
 \index Índice
 \shortcut idx
 \color #008000
@@ -109,17 +121,23 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle fancy
+\tablestyle default
 \tracking_changes false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\docbook_mathml_version 0
 \end_header
 
 \begin_body
 
 \begin_layout Chapter
-Título do Apêndice
+Estrutura Computacional do Simulador
 \end_layout
 
 \begin_layout Standard
@@ -128,11 +146,11 @@ status open
 
 \begin_layout Plain Layout
 
-
 \backslash
 lhead{Apêndice 
 \backslash
-thechapter: Titulo do Apêndice}
+thechapter:
+ Estrutura Computacional do Simulador}
 \backslash
 rhead{
 \backslash
@@ -141,54 +159,261 @@ thepage}
 
 \end_inset
 
-Descreve-se neste apêndice ...
+Descreve-se neste apêndice a organização computacional adotada para o desenvolvimento do simulador de ondas em meios porosos.
+ São apresentadas as principais classes do programa,
+ suas responsabilidades e a forma como os componentes se relacionam durante a execução de uma simulação.
 \end_layout
 
 \begin_layout Itemize
-Os anexos ou apêndices contém material auxiliar.
- Por exemplo, tabelas, gráficos, resultados de experimentos, algoritmos,
- códigos e simulações.
+A classe ParametrosSimulacao é responsável por armazenar a frequência inicial,
+ a frequência final e o número de pontos definidos pelo usuário para a simulação.
 \end_layout
 
 \begin_layout Itemize
-Um apêndice pode incluir assuntos mais gerais (geral demais para estar no
- núcleo do trabalho) ou mais específicos (detalhado demais para estar no
- núcleo do trabalho).
+A classe PropriedadesMeioPoroso reúne as propriedades físicas utilizadas pelos modelos,
+ incluindo parâmetros referentes à rocha,
+ ao fluido e ao comportamento térmico do meio.
 \end_layout
 
 \begin_layout Itemize
-Pode conter um artigo de auxílio fundamental ao trabalho.
- 
+A classe ResultadoSimulacao armazena as frequências analisadas e os resultados calculados para as velocidades de fase e atenuações das ondas P1,
+ P2 e T.
 \end_layout
 
 \begin_layout Itemize
-Pode conter artigos publicados.
+A classe SimuladorOndasPoroelasticas coordena a execução da simulação,
+ utilizando os parâmetros fornecidos pelo usuário e percorrendo a faixa de frequências estabelecida.
 \end_layout
 
 \begin_layout Itemize
-[tudo aquilo que for importante para a tese mas não essencial, deve ser
- colocado em apêndices]
+A classe abstrata ModeloPoroelastico define a operação comum que deve ser implementada pelos diferentes modelos físicos utilizados pelo simulador.
 \end_layout
 
 \begin_layout Itemize
-[como exemplo, revisão de metodologias, técnicas, modelos matemáticos, ítens
- desenvolvidos por terceiros]
+As classes ModeloBiotNaoDissipativo,
+ ModeloBiotDissipativo e ModeloBiotJKD representam as três formulações poroelásticas disponíveis no programa.
 \end_layout
 
 \begin_layout Itemize
-[algoritmos e programas devem ser colocados no apêndice]
+A classe SolucionadorEquacoesPoroelasticas concentra as operações numéricas necessárias à resolução dos sistemas e das raízes complexas empregadas pelos modelos.
 \end_layout
 
 \begin_layout Itemize
-[imagens detalhadas de programas desenvolvidos devem ser colocados no apêndice]
+A utilização de uma classe base para os modelos físicos permite que o simulador trabalhe com diferentes formulações mantendo o mesmo fluxo principal de execução.
 \end_layout
 
 \begin_layout Section
-Sub-Titulo do Apêndice
+Fluxo de Execução do Programa
 \end_layout
 
 \begin_layout Standard
-.....conteúdo..
+A execução do programa é iniciada com a solicitação dos dados necessários à simulação.
+ Os valores são informados manualmente pelo usuário por meio do terminal.
+\end_layout
+
+\begin_layout Standard
+Inicialmente são fornecidos os parâmetros que determinam a faixa de frequências da análise.
+ Esses dados correspondem à frequência inicial,
+ à frequência final e ao número de pontos e são armazenados em ParametrosSimulacao.
+\end_layout
+
+\begin_layout Standard
+Em seguida,
+ o programa solicita as propriedades físicas utilizadas na simulação.
+ Esses valores são armazenados em PropriedadesMeioPoroso e incluem propriedades da rocha,
+ do fluido e propriedades térmicas.
+\end_layout
+
+\begin_layout Standard
+Após o preenchimento dos dados de entrada,
+ o usuário seleciona um dos modelos físicos disponíveis:
+ ModeloBiotNaoDissipativo,
+ ModeloBiotDissipativo ou ModeloBiotJKD.
+\end_layout
+
+\begin_layout Standard
+O SimuladorOndasPoroelasticas utiliza os valores de ParametrosSimulacao para estabelecer as frequências que serão analisadas.
+ A faixa compreendida entre a frequência inicial e a frequência final é dividida de acordo com o número de pontos informado pelo usuário.
+\end_layout
+
+\begin_layout Standard
+Para cada frequência,
+ o simulador executa o método de cálculo definido por ModeloPoroelastico.
+ Por meio do polimorfismo,
+ o mesmo fluxo de execução pode utilizar qualquer um dos três modelos físicos disponíveis.
+\end_layout
+
+\begin_layout Standard
+De forma simplificada,
+ o processamento pode ser representado pela seguinte sequência:
+\end_layout
+
+\begin_layout Standard
+Entrada dos parâmetros
+\end_layout
+
+\begin_layout Standard
+→ armazenamento em ParametrosSimulacao
+\end_layout
+
+\begin_layout Standard
+→ entrada das propriedades físicas
+\end_layout
+
+\begin_layout Standard
+→ armazenamento em PropriedadesMeioPoroso
+\end_layout
+
+\begin_layout Standard
+→ seleção do modelo poroelástico
+\end_layout
+
+\begin_layout Standard
+→ geração da faixa de frequências
+\end_layout
+
+\begin_layout Standard
+→ execução do modelo para cada frequência
+\end_layout
+
+\begin_layout Standard
+→ resolução das equações necessárias
+\end_layout
+
+\begin_layout Standard
+→ cálculo das velocidades de fase e atenuações
+\end_layout
+
+\begin_layout Standard
+→ armazenamento em ResultadoSimulacao
+\end_layout
+
+\begin_layout Standard
+→ apresentação dos resultados.
+\end_layout
+
+\begin_layout Standard
+O algoritmo geral da simulação pode ser representado pelo seguinte pseudocódigo:
+\end_layout
+
+\begin_layout Standard
+INÍCIO
+\end_layout
+
+\begin_layout Standard
+Solicitar frequência inicial
+\end_layout
+
+\begin_layout Standard
+Solicitar frequência final
+\end_layout
+
+\begin_layout Standard
+Solicitar número de pontos
+\end_layout
+
+\begin_layout Standard
+Solicitar propriedades da rocha
+\end_layout
+
+\begin_layout Standard
+Solicitar propriedades do fluido
+\end_layout
+
+\begin_layout Standard
+Solicitar propriedades térmicas
+\end_layout
+
+\begin_layout Standard
+Validar os dados informados
+\end_layout
+
+\begin_layout Standard
+Solicitar ao usuário o modelo poroelástico
+\end_layout
+
+\begin_layout Standard
+Gerar a faixa de frequências
+\end_layout
+
+\begin_layout Standard
+PARA cada frequência da faixa
+\end_layout
+
+\begin_layout Standard
+Executar o modelo poroelástico selecionado
+\end_layout
+
+\begin_layout Standard
+Resolver as equações necessárias
+\end_layout
+
+\begin_layout Standard
+Calcular velocidade de fase P1
+\end_layout
+
+\begin_layout Standard
+Calcular velocidade de fase P2
+\end_layout
+
+\begin_layout Standard
+Calcular velocidade de fase T
+\end_layout
+
+\begin_layout Standard
+Calcular atenuação P1
+\end_layout
+
+\begin_layout Standard
+Calcular atenuação P2
+\end_layout
+
+\begin_layout Standard
+Calcular atenuação T
+\end_layout
+
+\begin_layout Standard
+Armazenar os resultados
+\end_layout
+
+\begin_layout Standard
+FIM PARA
+\end_layout
+
+\begin_layout Standard
+Apresentar os resultados
+\end_layout
+
+\begin_layout Standard
+FIM
+\end_layout
+
+\begin_layout Standard
+O relacionamento entre as classes pode ser representado pelo diagrama de classes desenvolvido para o projeto.
+\end_layout
+
+\begin_layout Standard
+No diagrama,
+ SimuladorOndasPoroelasticas utiliza ParametrosSimulacao para obter os parâmetros necessários à execução e produz um objeto ResultadoSimulacao contendo os valores calculados.
+\end_layout
+
+\begin_layout Standard
+ModeloPoroelastico funciona como classe base dos modelos físicos.
+ As classes ModeloBiotNaoDissipativo,
+ ModeloBiotDissipativo e ModeloBiotJKD especializam essa classe e implementam os cálculos correspondentes às respectivas formulações.
+\end_layout
+
+\begin_layout Standard
+SolucionadorEquacoesPoroelasticas fornece suporte às operações numéricas exigidas pelos modelos físicos,
+ enquanto PropriedadesMeioPoroso mantém os parâmetros físicos utilizados nesses cálculos.
+\end_layout
+
+\begin_layout Standard
+Essa organização permite separar os dados de entrada,
+ a execução da simulação,
+ os modelos físicos,
+ os procedimentos numéricos e os resultados,
+ mantendo o programa organizado sem aumentar desnecessariamente a quantidade de classes.
 \end_layout
 
 \end_body
